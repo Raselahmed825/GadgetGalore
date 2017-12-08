@@ -47,8 +47,35 @@
 
 
         <info.hoang8f.widget.FButton
+            android:id="@+id/btnSignUp"
+            android:text="SignUp"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            app:buttonColor="@color/btnSignUp"
+            app:shadowColor="#000000"
+            app:shadowHeight="5dp"
+            app:shadowEnabled="true"
+            app:cornerRadius="4dp"
+            />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btnSignIn"
+            android:text="Sign In"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            app:buttonColor="@color/btnSignActive"
+            app:shadowColor="#000000"
+            app:shadowHeight="5dp"
+            app:shadowEnabled="true"
+            app:cornerRadius="4dp"
+            />
+
 
 
 
