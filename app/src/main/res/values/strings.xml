@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">GadgetGalore</string>
-    <string name="slogan">Slogan</string>
+    <string name="slogan">Slogan asdasdasdasdasdasda</string>
     <string name="welcome">Welcome</string>
     <string name="todo">TODO</string>
     <string name="shop">Shop</string>
@@ -10,6 +10,12 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="contact">contact</string>
+    <string name="title_activity_home">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 
 </resources>
