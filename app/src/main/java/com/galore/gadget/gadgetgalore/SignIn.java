@@ -1,6 +1,7 @@
 package com.galore.gadget.gadgetgalore;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.galore.gadget.gadgetgalore.Common.Common;
 import com.galore.gadget.gadgetgalore.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,7 +56,12 @@ public class SignIn extends AppCompatActivity {
                             User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
                             if(user.getPassword().equals(edtPassword.getText().toString())){
 
-                                Toast.makeText(SignIn.this,"sign in successfull",Toast.LENGTH_SHORT).show();
+                                {
+                                    Intent homeIntent = new Intent(SignIn.this,Home.class);
+                                    Common.currentUser = user;
+                                    startActivity(homeIntent);
+                                    finish();
+                                }
 
                             }
                             else{
