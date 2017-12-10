@@ -4,11 +4,15 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.galore.gadget.gadgetgalore.Database.Database;
+import com.galore.gadget.gadgetgalore.Model.Order;
 import com.galore.gadget.gadgetgalore.Model.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,7 +34,7 @@ public class ProductDetail extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference products;
 
-
+    Product currentProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +46,25 @@ public class ProductDetail extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         products = database.getReference("Products");
 
+
+
         //init view
         numberButton = (ElegantNumberButton)findViewById(R.id.number_button);
         btnCart = (FloatingActionButton)findViewById(R.id.btnCart);
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Database(getBaseContext()).addToCart(new Order(
+                        prodcutId,currentProduct.getName(),numberButton.getNumber(),
+                        currentProduct.getPrice(),currentProduct.getDiscount()
+
+                ));
+
+                Toast.makeText(ProductDetail.this,"Added to Cart",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         product_description = (TextView)findViewById(R.id.product_description);
         product_name = (TextView)findViewById(R.id.product_name);
@@ -69,15 +89,15 @@ public class ProductDetail extends AppCompatActivity {
         products.child(prodcutId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Product product= dataSnapshot.getValue(Product.class);
+                currentProduct = dataSnapshot.getValue(Product.class);
 
                 //set Image
 
-                Picasso.with(getBaseContext()).load(product.getImage()).into(product_image);
-                collapsingToolbarLayout.setTitle(product.getName());
-                product_price.setText(product.getPrice());
-                product_name.setText(product.getName());
-                product_description.setText(product.getDescription());
+                Picasso.with(getBaseContext()).load(currentProduct.getImage()).into(product_image);
+                collapsingToolbarLayout.setTitle(currentProduct.getName());
+                product_price.setText(currentProduct.getPrice());
+                product_name.setText(currentProduct.getName());
+                product_description.setText(currentProduct.getDescription());
 
             }
 
