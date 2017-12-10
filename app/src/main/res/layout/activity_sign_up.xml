@@ -23,7 +23,7 @@
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtName"
             android:hint="Name"
-            android:text="Murgi"
+            android:text="Muneem"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="@android:color/white"
