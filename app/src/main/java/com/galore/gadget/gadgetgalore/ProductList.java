@@ -37,7 +37,7 @@ public class ProductList extends AppCompatActivity {
 
         //firebase
         database = FirebaseDatabase.getInstance();
-        productList= database.getReference("Prodcuts");
+        productList= database.getReference("Products");
 
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_product);

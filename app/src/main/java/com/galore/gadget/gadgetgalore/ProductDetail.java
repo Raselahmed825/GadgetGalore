@@ -54,8 +54,7 @@ public class ProductDetail extends AppCompatActivity {
 
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                new Database(getBaseContext()).addToCart(new Order(
+            public void onClick(View view) {                new Database(getBaseContext()).addToCart(new Order(
                         prodcutId,currentProduct.getName(),numberButton.getNumber(),
                         currentProduct.getPrice(),currentProduct.getDiscount()
 
@@ -78,7 +77,7 @@ public class ProductDetail extends AppCompatActivity {
         //get product id form intent
 
         if(getIntent()!= null)
-            prodcutId = getIntent().getStringExtra("ProductId");
+            prodcutId = getIntent().getStringExtra("ProdcutId");
         if(!prodcutId.isEmpty()){
             getDetailProduct(prodcutId);
         }
